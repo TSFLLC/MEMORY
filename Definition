@@ -1,0 +1,44 @@
+In SQL Server, "Page Reads/sec" is a performance counter that measures the rate at which data pages are read from disk into memory. 
+It is a measure of the I/O activity required to satisfy the data access demands of SQL Server.
+
+When SQL Server needs to access data that is not currently in memory (i.e., in the buffer cache), it must read the data from disk into memory. 
+The Page Reads/sec counter tracks the number of pages read from disk per second to satisfy these data access requests.
+
+A high Page Reads/sec value indicates that your SQL Server is experiencing a lot of I/O activity and is reading a large amount of data from disk. 
+This can be an indicator that your SQL Server is under memory pressure, and is having to read data from disk more frequently because there is not enough memory 
+available to store all of the required data pages in the buffer cache.
+
+It is important to note that some level of Page Reads/sec activity is normal and expected in most SQL Server workloads. However, 
+if the value is consistently high and the workload is not expected to generate that level of I/O activity, it may indicate that the server is experiencing 
+performance issues or that the hardware resources are insufficient to meet the demands of the workload.
+
+
+
+
+ftchuenteu@gmail.com
+What is lazy read in sql server
+In SQL Server, lazy read is a performance optimization technique that is used to reduce I/O activity and improve query performance.
+
+Lazy read allows SQL Server to defer the physical read of a data page from disk until it is actually required by a query. When a query needs to access a data page 
+that is not currently in memory, SQL Server will schedule a lazy read operation to bring the data page into memory when it is actually required.
+
+This technique is used to reduce the number of unnecessary I/O operations performed by SQL Server. Rather than immediately bringing data pages into memory when they 
+are requested, SQL Server will wait until they are actually needed by a query before performing the physical read operation. This can result in significant
+performance improvements, especially in situations where data pages are accessed infrequently or sporadically.
+
+It is important to note that lazy read is just one of several techniques used by SQL Server to optimize performance. Other techniques include read-ahead, 
+which reads multiple data pages into memory before they are actually requested, and pre-fetching, which anticipates future queries and loads data into 
+memory proactively to improve query performance.
+
+
+
+
+ftchuenteu@gmail.com
+W hat is batched request /sec mean
+In SQL Server, "Batch Requests/sec" is a performance counter that measures the rate at which batches of SQL statements are executed by the server.
+
+A batch is a collection of one or more SQL statements that are submitted to SQL Server for execution as a single unit of work. Batch Requests/sec counts the number of batches of SQL statements that are executed per second.
+
+This performance counter is a useful metric for measuring the overall workload on a SQL Server instance. A high Batch Requests/sec value indicates that the server is processing a large number of batches of SQL statements, which in turn suggests a high level of user activity or query workload. Conversely, a low Batch Requests/sec value may indicate that the server is experiencing performance issues or that the workload is not as heavy as expected.
+
+It is important to note that Batch Requests/sec is not necessarily a measure of query performance or efficiency, but rather a measure of the server's overall workload. High Batch Requests/sec values do not necessarily indicate good performance, and low values do not necessarily indicate poor performance. It is important to consider other performance metrics, such as CPU utilization, disk I/O, and memory usage, in order to fully understand and optimize the performance of a SQL Server instance.
